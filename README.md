@@ -1,3 +1,18 @@
+if (locale.getCountry().equals("IN")) {
+
+    NumberFormat nf = NumberFormat.getCurrencyInstance(new Locale("en", "IN"));
+    System.out.println("Salary : " + nf.format(1000000));
+
+} else {
+
+    NumberFormat nf = NumberFormat.getCurrencyInstance(locale);
+    System.out.println("Salary : " + nf.format(1000000));
+
+}
+
+
+
+
 app=Java Resource Bundle Demo
 welcome=Welcome!
 greeting=Hope you are having a wonderful day.
