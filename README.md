@@ -1,29 +1,136 @@
-This is a podcast platform built with **React, Firebase (v9+), and Redux Toolkit**. The platform allows users to create podcasts, upload episodes, and share their content with others. Users can also browse and search for podcasts created by other users.
+app=Java Resource Bundle Demo
+welcome=Welcome!
+greeting=Hope you are having a wonderful day.
+language=English
+country=India
+thankyou=Thank you for watching the demo.
+goodbye=Have a Nice Day!
 
-The project includes the following pages:
 
-- **Home**: This is the landing page of the platform. It features a list of recommended podcasts.
-- **Signup/Sign-in:** This page allows users to sign up or sign in to the platform using their email and password.
-- **Profile**: This page displays the user's profile information, including their email, ID, and name. It also allows users to create new podcasts and view their existing podcasts.
-- **Podcasts**: This page displays a list of all podcasts on the platform. Each podcast is displayed with its banner image, title, and description. Clicking on a podcast takes the user to the podcast details page.
-- **Create Podcast**: This page allows users to create a new podcast by providing its title, description, banner image, and list of episodes.
-- **Podcast Details**: This page displays detailed information about a specific podcast, including its banner image, title, description, and list of episodes. Users can play individual episodes on this page.
-- **Create Episode**: This page allows users to create a new episode for a specific podcast by providing its title, description, and audio file.
+app=Java Resource Bundle Demo
+welcome=Welcome!
+greeting=Hope you are having a wonderful day.
+language=English
+country=India
+thankyou=Thank you for watching the demo.
+goodbye=Have a Nice Day!
 
-## **Features -**
+app=\u091C\u093E\u0935\u093E \u0930\u093F\u0938\u094B\u0930\u094D\u0938 \u092C\u0902\u0921\u0932 \u0921\u0947\u092E\u094B
+welcome=\u0938\u094D\u0935\u093E\u0917\u0924 \u0939\u0948
+greeting=\u0906\u092A\u0915\u093E \u0926\u093F\u0928 \u092E\u0902\u0917\u0932\u092E\u092F \u0939\u094B
+language=\u0939\u093F\u0928\u094D\u0926\u0940
+country=\u092D\u093E\u0930\u0924
+thankyou=\u0921\u0947\u092E\u094B \u0926\u0947\u0916\u0928\u0947 \u0915\u0947 \u0932\u093F\u090F \u0927\u0928\u094D\u092F\u0935\u093E\u0926
+goodbye=\u0906\u092A\u0915\u093E \u0926\u093F\u0928 \u0936\u0941\u092D \u0939\u094B
 
-The platform also includes the following features:
+app=Démonstration Java Resource Bundle
+welcome=Bienvenue !
+greeting=Nous sommes heureux de vous accueillir.
+language=Français
+country=France
+thankyou=Merci d'avoir regardé cette démonstration.
+goodbye=Bonne journée !
 
-- **Authentication**: Users can sign up and log in to the platform using their email and password. Firebase Authentication is used to handle the authentication flow.
-- **Database**: Firebase Firestore is used to store and retrieve podcast and episode data.
-- **Storage**: Firebase Storage is used to upload and retrieve podcast banner images and episode audio files.
-- **Redux Toolkit**: Redux Toolkit is used to manage the application state, including user authentication and podcast data.
-- **Sharing**: Users can share their podcasts with others by providing a link to the podcast details page.
-- **Search**: Users can search for specific podcasts by keyword using the search bar on the home page.
 
-## **Tech Stack Used -**
 
-- **React:** For Frontend Web App
-- **Firebase:** For all backend-related services - Auth, Database and Storage.
-- **Redux Toolkit and React-Redux:**  For state management.
-- **React Router Dom:** For routing and router-related functions - Dynamic routing.
+package pkg1;
+
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("========================================");
+        System.out.println("     JAVA RESOURCE BUNDLE DEMO");
+        System.out.println("========================================");
+
+        System.out.println("Choose Language");
+        System.out.println("1. English");
+        System.out.println("2. Hindi");
+        System.out.println("3. French");
+
+        int choice = sc.nextInt();
+
+        Locale locale;
+
+        switch (choice) {
+
+        case 2:
+            locale = new Locale("hi", "IN");
+            break;
+
+        case 3:
+            locale = Locale.FRANCE;
+            break;
+
+        default:
+            locale = new Locale("en", "IN");
+        }
+
+        ResourceBundle bundle = ResourceBundle.getBundle("pkg1.message", locale);
+
+        System.out.println("\n========================================");
+        System.out.println(bundle.getString("app"));
+        System.out.println("========================================");
+
+        System.out.println(bundle.getString("welcome"));
+        System.out.println(bundle.getString("greeting"));
+
+        System.out.println();
+
+        System.out.println("Language : " + bundle.getString("language"));
+        System.out.println("Country  : " + bundle.getString("country"));
+
+        System.out.println();
+
+        Date today = new Date();
+
+        DateFormat df = DateFormat.getDateInstance(DateFormat.FULL, locale);
+
+        System.out.println("Today's Date : " + df.format(today));
+
+        NumberFormat nf = NumberFormat.getCurrencyInstance(locale);
+
+        System.out.println("Salary : " + nf.format(50000));
+
+        System.out.println();
+
+        DateTimeFormatter formatter =
+                DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+        System.out.println("Current Time in Different Time Zones");
+
+        System.out.println("--------------------------------------");
+
+        System.out.println("India   : "
+                + ZonedDateTime.now(ZoneId.of("Asia/Kolkata"))
+                        .format(formatter));
+
+        System.out.println("USA     : "
+                + ZonedDateTime.now(ZoneId.of("America/New_York"))
+                        .format(formatter));
+
+        System.out.println("France  : "
+                + ZonedDateTime.now(ZoneId.of("Europe/Paris"))
+                        .format(formatter));
+
+        System.out.println();
+
+        System.out.println(bundle.getString("thankyou"));
+        System.out.println(bundle.getString("goodbye"));
+
+        sc.close();
+    }
+
+}
